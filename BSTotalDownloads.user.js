@@ -68,4 +68,3 @@ request.onreadystatechange = function() {
 };
 request.open('GET', 'https://raw.githubusercontent.com/Chandoggie/BSTotalDownloads/master/version.json', true);
 request.send(null);
-request.send(null);
