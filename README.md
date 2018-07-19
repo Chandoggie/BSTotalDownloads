@@ -1,5 +1,5 @@
 # BSTotalDownloads
-This is a simple tampermonkey script to display the total number of downloads a specific user has in total across all of their songs.
+This is a simple tampermonkey script to display the total number of downloads a specific user has across all of their songs.
 
 ![Image Shows Total Downloads](https://i.imgur.com/YrTrJ3W.png)
 
