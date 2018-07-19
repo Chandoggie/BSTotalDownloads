@@ -52,7 +52,7 @@ $("[id^=song]:first").append('<tr><td>Total Downloads: ' + toCommas(totalnumber)
 */
 
 // Adds to the webpage
-$(".row:first").prepend('<b>Total Downloads: ' + toCommas(totalnumber) + '</b>');
+$(".row:first").prepend('<h4><b>Total Downloads: ' + toCommas(totalnumber) + '</b></h4>');
 
 // Updater
 var version = 0.1;
