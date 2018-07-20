@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BSTotalDownloads
 // @namespace    https://github.com/Chandoggie/BSTotalDownloads
-// @version      0.1
+// @version      0.2
 // @description  Adds up all the `Download: ###` and displays them at the top of the Users BeatSaver page.
 // @author       Chandoggie
 // @icon         https://i.imgur.com/BeIFkaB.png
@@ -10,52 +10,70 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 // ==/UserScript==
 
+//Non-intrusive "Thank You" watermark. <3
+$(".text-center:last").append($(".b"), '<b>|| <a href="https://github.com/Chandoggie/BSTotalDownloads">Thanks for using BSTD! 🖤</a></b>');
+
+
+// Checker for having a full page of songs. Displays text if over 15.
+var tableIDs = [];
+
+$('table').each(function(){
+   tableIDs.push(this.id);
+});
+
+var totalsongs = tableIDs.length;
+var testing = $('button').text();
+if (totalsongs == 15 && testing.includes("Page")) {
+    $(".row:first").prepend('<h4><b><i><font size="3" color="red">This user has 15+ songs. BSTotalDownloads does not support multipage loading as of yet.<br />If you would like to help add that functionality, feel free to contact me from <a href="https://github.com/Chandoggie/BSTotalDownloads">HERE</a></font></i></b></h4>');
+} else {
+};
+
+// Setting vars based on webpage data.
 var Download = $("td").text();
 var SplitDownload = Download.split("Downloads: ");
-// console.log($("td").text()); -- Used to log the original text input pre-split
-// console.log(SplitDownload);  -- Used to log the original text input post-split
+var SplitFinished = Download.split("Finished: ");
 
-//Removes the first useless split
+//Removes the first useless split of each array
 var indexToRemove = 0;
 var numberToRemove = 1;
-SplitDownload.splice(indexToRemove, numberToRemove);
 
-// Logs the array, separates the downloads from the other information
+function spliceFun(array) {
+    return array.splice(indexToRemove, numberToRemove);
+}
+
+spliceFun(SplitDownload);
+spliceFun(SplitFinished);
+
+// Logs the array, separates the correct infomation from the other information
 SplitDownload.forEach(function(element, index, array) {
-    array[index] = parseInt(element.replace(/ /g, '').replace(/(?:\r\n|\r|\n)/g, '').replace(/\ \\|\\|F.*/, '').replace("||", ''));
-    console.log("Current Numbers: " + element.replace(/ /g, '').replace(/(?:\r\n|\r|\n)/g, '').replace(/\ \\|\\|F.*/, '').replace("||", ''));
+    array[index] = parseInt(element.replace(/\s/g, '').replace(/(?:\r\n|\r|\n)/g, '').replace(/\| F.*/g, '').replace("|", ''));
 });
-console.log("Current Numbers Array: " + SplitDownload);
+SplitFinished.forEach(function(element, index, array) {
+    array[index] = parseInt(element.replace(/\s/g, '').replace(/\|.*/g,'').replace("||", ''));
+});
 
+// Totals the array
 var totalnumber = 0;
 for (var i = 0; i < SplitDownload.length; i++) {
     totalnumber += SplitDownload[i]
 }
-
 totalnumber = totalnumber.toString();
-console.log("Final Number Edit: " + totalnumber);
+var totalFnumber = 0;
+for (var f = 0; f < SplitFinished.length; f++) {
+    totalFnumber += SplitFinished[f]
+}
+totalFnumber = totalFnumber.toString();
 
-// Adds Commas to Numbers
+// Add Commas to Numbers
 function toCommas(value) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-/*
-// First Attempt at adding the number to the page.
-var div = document.createElement('div');
-div.innerHTML = totalnumber;
-div.style = "top:0;position:fixed;z-index:99999;color:#9d9d9d;padding:20px;background-color:#333;max-height:340px;";
-document.body.appendChild(div);
-
-// Second Attempt at adding the number to the page.
-$("[id^=song]:first").append('<tr><td>Total Downloads: ' + toCommas(totalnumber) + '</td></tr>');
-*/
-
 // Adds to the webpage
-$(".row:first").prepend('<h4><b>Total Downloads: ' + toCommas(totalnumber) + '</b></h4>');
+$(".row:first").prepend('<h4><b>Total Downloads: ' + toCommas(totalnumber) + '<br /><br />Total Finishes: ' + toCommas(totalFnumber) + '<br /><br />Total Songs: ' + totalsongs + '</b></h4>');
 
 // Updater
-var version = 0.1;
+var version = 0.2;
 var request = new XMLHttpRequest();
 request.onreadystatechange = function() {
     if (request.readyState == XMLHttpRequest.DONE) {
