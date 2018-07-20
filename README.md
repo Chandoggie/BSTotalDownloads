@@ -1,7 +1,7 @@
 # BSTotalDownloads
-This is a simple tampermonkey script to display the total number of downloads a specific user has across all of their songs.
+This is a simple tampermonkey script to display the total number of downloads / finished / songs a specific user has across all of their uploads.
 
-![Image Shows Total Downloads](https://i.imgur.com/YrTrJ3W.png)
+![Image Shows Total Downloads](https://i.imgur.com/I0jfrIv.png)
 
 
 
@@ -14,3 +14,14 @@ This is a simple tampermonkey script to display the total number of downloads a 
 If you would like to contact me, my social media is as followed: 
 * Twitter (@Chandoggie)
 * Discord (Chandoggie#0001)
+
+# 0.2 Changelog
+Additions:
++ Added "Total Finishes"
++ Added "Total Songs"
++ Added disclaimer for users with multiple pages of songs.
++ Added small watermark at the bottom of the users page.
+
+Removals:
+- Removed old commented out code.
+- Removed multiple debug console.log()'s
