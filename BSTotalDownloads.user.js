@@ -75,7 +75,7 @@ function toCommas(value) {
 $(".row:first").prepend('<h4><b>Total Downloads: ' + toCommas(totalnumber) + '<br /><br />Total Finishes: ' + toCommas(totalFnumber) + '<br /><br />Total Songs: ' + totalsongs + '</b></h4>');
 
 // Updater
-var version = 0.2;
+var version = 0.3;
 var request = new XMLHttpRequest();
 request.onreadystatechange = function() {
     if (request.readyState == XMLHttpRequest.DONE) {
