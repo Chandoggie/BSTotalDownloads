@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BSTotalDownloads
 // @namespace    https://github.com/Chandoggie/BSTotalDownloads
-// @version      0.2
+// @version      0.3
 // @description  Adds up all the `Download: ###` and displays them at the top of the Users BeatSaver page.
 // @author       Chandoggie
 // @icon         https://i.imgur.com/BeIFkaB.png
