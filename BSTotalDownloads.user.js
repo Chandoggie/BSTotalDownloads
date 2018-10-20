@@ -7,6 +7,8 @@
 // @icon         https://i.imgur.com/BeIFkaB.png
 // @match        https://beatsaver.com/browse/byuser/*
 // @match        https://beatsaver.com/index.php/browse/byuser/*
+// @match        https://www.beatsaver.com/browse/byuser/*
+// @match        https://www.beatsaver.com/index.php/browse/byuser/*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 // ==/UserScript==
 
