@@ -26,7 +26,7 @@ $('table').each(function(){
 var totalsongs = tableIDs.length;
 var testing = $('button').text();
 if (totalsongs == 15 && testing.includes("Page")) {
-    $(".row:first").prepend('<h4><b><i><font size="3" color="red">This user has 15+ songs. BSTotalDownloads does not support multipage loading as of yet.<br />If you would like to help add that functionality, feel free to contact me from <a href="https://github.com/Chandoggie/BSTotalDownloads">HERE</a></font></i></b></h4>');
+    $(".row:first").prepend('<h4><b><i><font size="3" color="red">This user has 15+ songs. BSTD does not support multipage loading as of yet.<br />If you would like to help add that functionality, feel free to contact me from <a href="https://github.com/Chandoggie/BSTotalDownloads">HERE</a></font></i></b></h4>');
 } else {
 };
 
