@@ -25,3 +25,7 @@ Additions:
 Removals:
 - Removed old commented out code.
 - Removed multiple debug console.log()'s
+
+# 0.3 Changelog
+Additions:
++ Added an @match for Beatsaver when using 'www.'
